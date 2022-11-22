@@ -12,6 +12,7 @@ public class MainFrame extends JFrame {
         jf.setTitle("〇〇");
         jf.setResizable(false);
         jf.setVisible(true);
+
     }
     public static void main(String[] args){
         new MainFrame();
