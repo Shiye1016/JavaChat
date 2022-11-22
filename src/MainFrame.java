@@ -11,6 +11,9 @@ public class MainFrame extends JFrame {
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jf.setTitle("〇〇");
         jf.setResizable(false);
+
+
+
     }
     public static void main(String[] args){
         new MainFrame();
