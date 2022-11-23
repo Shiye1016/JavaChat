@@ -9,7 +9,8 @@ public class MainFrame extends JFrame {
         jf.setIconImage(imageIcon.getImage());
         jf.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2- jf.getWidth()/2, 0, 600, 600);//获取屏幕宽度并将窗口放置到屏幕最右边
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jf.setTitle("西瓜砍树             ");
+        jf.setTitle("西瓜砍树");
+        //1234542
         jf.setResizable(false);
         jf.setVisible(true);
     }
