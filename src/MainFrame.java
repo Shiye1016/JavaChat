@@ -13,6 +13,7 @@ public class MainFrame extends JFrame {
         jf.setTitle("柿子砍树");
         jf.setResizable(false);
         jf.setVisible(true);
+        System.out.println("sbxx");
     }
     public static void main(String[] args){
         new MainFrame();
