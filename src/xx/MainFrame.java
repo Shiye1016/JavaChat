@@ -2,6 +2,7 @@ package xx;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 
 public class MainFrame extends JFrame {
     public MainFrame() {
@@ -16,9 +17,11 @@ public class MainFrame extends JFrame {
         jf.setResizable(false);
 
         //窗口内容
-        JTextArea text= new JTextArea(20,10);
-        text.setSize(100,20);
-        jf.getContentPane().add(text);jf.setVisible(true);
+        JTextArea text= new JTextArea("战舰个你是我男神",1,1);
+       // text.setFo
+        text.setFont(new Font("微软雅黑",Font.PLAIN,19));
+        jf.getContentPane().add(text);
+        jf.setVisible(true);
     }
     public static void main(String[] args){
         new MainFrame();
