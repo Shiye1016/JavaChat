@@ -14,20 +14,14 @@ public class MainFrame extends JFrame {
         jf.setLocationRelativeTo(null);
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//设置关闭窗口程序退出
         jf.setTitle("我是柿子砍树");
-        //jf.setResizable(false);
-        //窗口内容
-        //JTextArea text= new JTextArea(2,4);
-        //text.setBounds(0,0,100,20);
-        //text.setFont(new Font("微软雅黑",Font.PLAIN,19));
-       // jf.getContentPane().add(text);
         JTextField te = new JTextField(null,null,20);
         te.setLocation(0,0);
         te.setBounds(0,0,200,10);
         jf.getContentPane().add(te);
         jf.setVisible(true);
     }
-    public static void main(String[] args){
-        new MainFrame();
-    }
+//    public static void main(String[] args){
+//        new MainFrame();
+//    }
 }
 
