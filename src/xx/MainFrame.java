@@ -14,10 +14,11 @@ public class MainFrame extends JFrame {
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//设置关闭窗口程序退出
         jf.setTitle("我是柿子砍树");
         jf.setResizable(false);
-        jf.setVisible(true);
+
         //窗口内容
-
-
+        JTextArea text= new JTextArea(20,10);
+        text.setSize(100,20);
+        jf.getContentPane().add(text);jf.setVisible(true);
     }
     public static void main(String[] args){
         new MainFrame();
