@@ -1,7 +1,7 @@
 package Constants;
 
 /**
- * The Project's Constants.Constants
+ * The Project's Constants
  */
 public class Constants {
     // The Strings

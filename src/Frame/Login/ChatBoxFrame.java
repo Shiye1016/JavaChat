@@ -1,7 +1,7 @@
 package Frame.Login;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import Constants.Constants;
+
 import com.sun.scenario.effect.impl.sw.java.JSWBoxBlurPeer;
 
 import java.io.File;
