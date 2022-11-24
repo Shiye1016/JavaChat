@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class MainFrame extends JFrame {
     public MainFrame() {
         JFrame jf = new JFrame();
+        jf.setLayout(new FlowLayout());
         ImageIcon imageIcon = new ImageIcon("images/123.jpg");
         jf.getContentPane().setBackground(new Color(217, 236, 245)); //设置背景颜色
         jf.setIconImage(imageIcon.getImage());
@@ -17,8 +18,8 @@ public class MainFrame extends JFrame {
         jf.setResizable(false);
 
         //窗口内容
-        JTextArea text= new JTextArea("战舰个你是我男神",1,1);
-       // text.setFo
+        JTextArea text= new JTextArea(2,4);
+        text.setBounds(0,0,100,20);
         text.setFont(new Font("微软雅黑",Font.PLAIN,19));
         jf.getContentPane().add(text);
         jf.setVisible(true);
