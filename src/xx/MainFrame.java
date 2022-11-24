@@ -15,6 +15,9 @@ public class MainFrame extends JFrame {
         jf.setTitle("我是柿子砍树");
         jf.setResizable(false);
         jf.setVisible(true);
+        //窗口内容
+
+
     }
     public static void main(String[] args){
         new MainFrame();
