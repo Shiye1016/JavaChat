@@ -1,4 +1,4 @@
-package zjh;
+package Frame.Login;
 import javax.swing.*;
 import Constants.Constants;
 public class ChatBoxFrame extends  JFrame {

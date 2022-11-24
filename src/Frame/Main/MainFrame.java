@@ -1,4 +1,4 @@
-package xx;
+package Frame.Main;
 import Constants.Constants;
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
         jf.getContentPane().setBackground(new Color(217, 236, 245)); //设置背景颜色
         jf.setIconImage(imageIcon.getImage());
         jf.setSize(600,600);
-        jf.setLocationRelativeTo(null);//kkkkkkkk
+        jf.setLocationRelativeTo(null);
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//设置关闭窗口程序退出
         jf.setTitle(Constants.APP_NAME);
         JTextField te = new JTextField(null,null,20);

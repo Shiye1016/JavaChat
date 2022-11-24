@@ -12,7 +12,7 @@ public class ImageIcon extends JFrame{
         Container c=getContentPane();
 
         JLabel l=new JLabel("这是一个图片的标签");
-            URL url=ImageIcon.class.getResource("1668779682366.jpg");//获取图片url 路径
+            URL url=ImageIcon.class.getResource("images/123.jpg");//获取图片url 路径
         Icon icon=new javax.swing.ImageIcon(url);
         l.setIcon(icon);//这里才是添加图片的
         c.add(l);
