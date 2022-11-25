@@ -4,6 +4,8 @@ import javax.swing.*;
 import Constants.Constants;
 import com.sun.scenario.effect.impl.sw.java.JSWBoxBlurPeer;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,8 +14,8 @@ public class ChatBoxFrame{
     final int width=500;
     final int height=300;
     public void init(){
-        jf.setSize(500,300);
-        //设置界面剧中
+        jf.setSize(width,height);
+        //设置界面居中
         jf.setLocationRelativeTo(null);
         //不可改变按大小
         jf.setResizable(false);
@@ -50,6 +52,20 @@ public class ChatBoxFrame{
         Box btnBox=Box.createHorizontalBox();
         JButton loginBtn=new JButton("登陆");
         JButton registBtn=new JButton("注册");
+        //登陆添加监视
+        loginBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //获取用户输入的数据
+                String username=ufiedl.getText().trim();
+                //获得密码
+                String password=pfiedl.getText().trim();
+
+                //访问登陆接口
+
+            }
+        });
+
         btnBox.add(loginBtn);
         btnBox.add(Box.createHorizontalStrut(60));//间隔距离
         btnBox.add(registBtn);
