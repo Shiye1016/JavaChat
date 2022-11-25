@@ -1,8 +1,7 @@
 package Frame.Main;
-import Constants.Constants;
 import javax.swing.*;
 import java.awt.*;
-
+import Constants.Constants;
 public class MainFrame extends JFrame {
     public MainFrame() {
         JFrame jf = new JFrame();

@@ -1,9 +1,8 @@
 package Frame.Login;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import Constants.Constants;
-import com.sun.scenario.effect.impl.sw.java.JSWBoxBlurPeer;
-
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,11 +11,12 @@ public class ChatBoxFrame{
     final int width=500;
     final int height=300;
     public void init(){
-        jf.setSize(500,300);
+        jf.setSize(width,height);
         //设置界面剧中
         jf.setLocationRelativeTo(null);
         //不可改变按大小
         jf.setResizable(false);
+        jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         try {
             jf.setIconImage(ImageIO.read(new File("images/123.jpg")));
         } catch (IOException e) {
@@ -24,15 +24,15 @@ public class ChatBoxFrame{
         }
         //设置窗口的内容
         //垂直水平排列BOX实现 +panel
-        JPanel bgpanel=new JPanel();
+        JPanel bgPanel=new JPanel();
         //组装登陆相关的元素
         Box vBox=Box.createVerticalBox();//垂直
         //组装用户名
         Box uBox= Box.createHorizontalBox();//水平
-        JLabel ulabel=new JLabel("用户名:");
-        //输入框 15字符的宽度
+        JLabel uLabel=new JLabel("用户名:");
+        //输入框15个字符的宽度
         JTextField ufiedl=new JTextField(15);
-        uBox.add(ulabel);
+        uBox.add(uLabel);
         //20个像素的空格
         uBox.add(Box.createHorizontalStrut(10));//间隔距离
         uBox.add(ufiedl);
@@ -61,8 +61,10 @@ public class ChatBoxFrame{
         vBox.add(pBox);
         vBox.add(Box.createVerticalStrut(40));//行之间距离
         vBox.add(btnBox);
-        bgpanel.add(vBox);
-        jf.add(bgpanel);
+        bgPanel.add(vBox);
+        jf.add(bgPanel);
+        //设置背景背景颜色
+        //bgPanel.setBackground(new Color(100,106,146));
         jf.setVisible(true);
 
     }
