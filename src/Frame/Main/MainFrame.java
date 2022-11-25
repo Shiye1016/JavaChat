@@ -19,9 +19,12 @@ public class MainFrame extends JFrame {
         te.setBounds(0,0,200,10);
         jf.getContentPane().add(te);
         jf.setVisible(true);
+        String s = te.getText();
+        System.out.println(s);
     }
     public static void main(String[] args){
-        new MainFrame();
+        MainFrame m =  new MainFrame();
+        m.getContentPane().getFocusTraversalKeys(0);
     }
 }
 
