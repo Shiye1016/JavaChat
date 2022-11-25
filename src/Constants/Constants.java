@@ -46,7 +46,7 @@ public class Constants {
 
     public static final String HAD_EXIT = "已经退出, ";
     public static final String EXIT_TIME = "退出时间:";
-    public static final String LEAVE_ROOM = " 恋恋不舍的离开了聊天室。";
+    public static final String LEAVE_ROOM = " 恋恋不舍地离开了聊天室。";
 
     public static final String VERSION_INFO = "Version No. v1.51";
     public static final String APP_ABOUT_INFO = "Long.Luo Created @8th, March, 2012" + "at Shenzhen, China";
