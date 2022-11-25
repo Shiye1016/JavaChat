@@ -60,7 +60,6 @@ public class ChatBoxFrame{
                 String username=ufiedl.getText().trim();
                 //获得密码
                 String password=pfiedl.getText().trim();
-
                 //访问登陆接口
 
             }
