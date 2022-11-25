@@ -1,8 +1,11 @@
 package Frame.Login;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
+import Constants.Constants;
+import com.sun.scenario.effect.impl.sw.java.JSWBoxBlurPeer;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,11 +15,10 @@ public class ChatBoxFrame{
     final int height=300;
     public void init(){
         jf.setSize(width,height);
-        //设置界面剧中
+        //设置界面居中
         jf.setLocationRelativeTo(null);
         //不可改变按大小
         jf.setResizable(false);
-        jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         try {
             jf.setIconImage(ImageIO.read(new File("images/123.jpg")));
         } catch (IOException e) {
@@ -24,15 +26,15 @@ public class ChatBoxFrame{
         }
         //设置窗口的内容
         //垂直水平排列BOX实现 +panel
-        JPanel bgPanel=new JPanel();
+        JPanel bgpanel=new JPanel();
         //组装登陆相关的元素
         Box vBox=Box.createVerticalBox();//垂直
         //组装用户名
         Box uBox= Box.createHorizontalBox();//水平
-        JLabel uLabel=new JLabel("用户名:");
-        //输入框15个字符的宽度
+        JLabel ulabel=new JLabel("用户名:");
+        //输入框 15字符的宽度
         JTextField ufiedl=new JTextField(15);
-        uBox.add(uLabel);
+        uBox.add(ulabel);
         //20个像素的空格
         uBox.add(Box.createHorizontalStrut(10));//间隔距离
         uBox.add(ufiedl);
@@ -50,6 +52,20 @@ public class ChatBoxFrame{
         Box btnBox=Box.createHorizontalBox();
         JButton loginBtn=new JButton("登陆");
         JButton registBtn=new JButton("注册");
+        //登陆添加监视
+        loginBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //获取用户输入的数据
+                String username=ufiedl.getText().trim();
+                //获得密码
+                String password=pfiedl.getText().trim();
+
+                //访问登陆接口
+
+            }
+        });
+
         btnBox.add(loginBtn);
         btnBox.add(Box.createHorizontalStrut(60));//间隔距离
         btnBox.add(registBtn);
@@ -61,10 +77,8 @@ public class ChatBoxFrame{
         vBox.add(pBox);
         vBox.add(Box.createVerticalStrut(40));//行之间距离
         vBox.add(btnBox);
-        bgPanel.add(vBox);
-        jf.add(bgPanel);
-        //设置背景背景颜色
-        //bgPanel.setBackground(new Color(100,106,146));
+        bgpanel.add(vBox);
+        jf.add(bgpanel);
         jf.setVisible(true);
 
     }
