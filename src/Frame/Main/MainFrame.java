@@ -6,7 +6,9 @@ public class MainFrame extends JFrame {
     final int width = 600;
     final int height = 600;
     public MainFrame() {
-        setSize(width,height);
+        super.setSize(width,height);
+    }
+    public void Init(){
         getContentPane().setBackground(new Color(217, 236, 245)); //背景颜色
         setIconImage(new ImageIcon("images/123.jpg").getImage());//窗口图标
         setLocationRelativeTo(null);//窗口居中显示
@@ -15,8 +17,7 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args){
-        MainFrame m =  new MainFrame();
-        //`12
+        new MainFrame().Init();
     }
 }
 
