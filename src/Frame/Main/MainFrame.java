@@ -13,13 +13,9 @@ public class MainFrame extends JFrame {
         jf.setLocationRelativeTo(null);
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//设置关闭窗口程序退出
         jf.setTitle(Constants.APP_NAME);
-        JTextField te = new JTextField(null,null,20);
-        te.setLocation(0,0);
-        te.setBounds(0,0,200,10);
-        jf.getContentPane().add(te);
+
+
         jf.setVisible(true);
-        String s = te.getText();
-        System.out.println(s);
     }
     public static void main(String[] args){
         MainFrame m =  new MainFrame();
