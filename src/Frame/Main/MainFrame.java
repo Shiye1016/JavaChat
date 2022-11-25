@@ -19,13 +19,14 @@ public class MainFrame extends JFrame {
 
         //左上角头像
         JLabel IconLabel = new JLabel();
-
-        IconLabel.setIcon(new ImageIcon("images/1233.png"));
-        IconLabel.setSize(100,100);
-        Box Icon =Box.createVerticalBox();//水平排列
-        Icon.add(IconLabel);
-        Icon.setSize(100,100);
-        this.add(Icon);
+        IconLabel.setPreferredSize(new Dimension(100,100));
+        IconLabel.setIcon(new ImageIcon("images/12333.png"));
+        Box IconBox =Box.createVerticalBox();//头像垂直排列
+        //Icon.add(Box.createHorizontalStrut(5));
+       // IconBox.add(Box.createHorizontalStrut(20));
+        IconBox.add(IconLabel);
+        this.add(IconBox);
+        Box.createHorizontalStrut(200);
         this.setVisible(true);
     }
 
