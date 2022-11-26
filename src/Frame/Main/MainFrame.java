@@ -1,12 +1,13 @@
 package Frame.Main;
 
 import Constants.Constants;
+import com.sun.org.apache.xpath.internal.res.XPATHErrorResources_ja;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    final int width = 1000;
+    final int width = 800;
     final int height = 550;
     public MainFrame() {}
     public void Init(){
@@ -56,7 +57,18 @@ public class MainFrame extends JFrame {
         panel.add(bBox);
         bBox.setBounds(23,350,200,200);
 
-        //右侧消息框和
+        //右侧消息框和输入框
+        JTextArea jTextArea_1 = new JTextArea();//消息框
+        JTextArea jTextArea_2 = new JTextArea();//输入框
+        JButton send = new JButton("发送");//发送按钮
+        Box b1 = Box.createVerticalBox();//用于放置输入框和按钮
+        panel.add(jTextArea_2);
+        b1.add(jTextArea_1);
+        panel.add(b1);
+        b1.setBounds(230,10,540,350);
+
+        Box b2 = Box.createHorizontalBox();//用于放置消息框;
+
 
         this.add(panel);
         this.setVisible(true);
