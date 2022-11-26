@@ -56,6 +56,7 @@ public class MainFrame extends JFrame {
         panel.add(bBox);
         bBox.setBounds(23,350,200,200);
 
+        //右侧消息框和
 
         this.add(panel);
         this.setVisible(true);
