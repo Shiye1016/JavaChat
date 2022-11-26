@@ -1,14 +1,13 @@
 package Frame.Main;
 
 import Constants.Constants;
-import com.sun.org.apache.xpath.internal.res.XPATHErrorResources_ja;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
     final int width = 800;
-    final int height = 550;
+    final int height = 640;
     public MainFrame() {}
     public void Init(){
         this.setSize(width,height);
@@ -44,7 +43,7 @@ public class MainFrame extends JFrame {
         panel.add(listText);
         listText.setBounds(80,100,200,200);
         panel.add(jl_1);
-        jl_1.setBounds(60-50,210,100+50*2+10,200);
+        jl_1.setBounds(60-50,210,100+50*2+10,335);
 
 
         //添加删除按钮
@@ -55,20 +54,25 @@ public class MainFrame extends JFrame {
         bBox.add(Box.createHorizontalStrut(10));
         bBox.add(del);
         panel.add(bBox);
-        bBox.setBounds(23,350,200,200);
+        bBox.setBounds(23,467,200,200);
 
         //右侧消息框和输入框
         JTextArea jTextArea_1 = new JTextArea();//消息框
         JTextArea jTextArea_2 = new JTextArea();//输入框
         JButton send = new JButton("发送");//发送按钮
-        Box b1 = Box.createVerticalBox();//用于放置输入框和按钮
+        Box b1 = Box.createVerticalBox();//用于放置消息框
         panel.add(jTextArea_2);
         b1.add(jTextArea_1);
         panel.add(b1);
         b1.setBounds(230,10,540,350);
 
-        Box b2 = Box.createHorizontalBox();//用于放置消息框;
-
+        Box b2 = Box.createHorizontalBox();//用于放置输入框和发送按钮
+        b2.add(jTextArea_2);
+        b2.add(Box.createRigidArea(new Dimension(20,20)));
+        panel.add(b2);
+        panel.add(send);
+        b2.setBounds(230,370,450,210);
+        send.setBounds(670,370,100,210);
 
         this.add(panel);
         this.setVisible(true);
