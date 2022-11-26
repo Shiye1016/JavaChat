@@ -1,5 +1,7 @@
 package Constants;
 
+import java.awt.*;
+
 /**
  * The Project's Constants
  */
@@ -52,4 +54,7 @@ public class Constants {
     public static final String APP_ABOUT_INFO = "Long.Luo Created @8th, March, 2012" + "at Shenzhen, China";
 
     public static final String SAVE_LOG_FILE = "记录保存在log.txt";
+
+    //color
+    public  static final Color BgColor = new Color(217,236,245);
 }
