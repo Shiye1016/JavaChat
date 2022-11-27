@@ -35,7 +35,6 @@ public class MainFrame extends JFrame {
         panel.setBackground(Constants.BgColor);
         panel.add(IconBox);
 
-
         //聊天列表框
         String[] item = {"好友1","好友2","好友3","好友4","好友5"};
         JList<String> jl_1=new JList<>(item);// 创建列表框
@@ -59,17 +58,18 @@ public class MainFrame extends JFrame {
         //右侧消息框和输入框
         JTextArea jTextArea_1 = new JTextArea("聊天记录");//消息框
         jTextArea_1.setEditable(false);//消息框只读
+        JScrollPane js1 = new JScrollPane();//消息框滚动条
+        js1.getViewport().add(jTextArea_1);
         JTextArea jTextArea_2 = new JTextArea();//输入框
+        JScrollPane js2 = new JScrollPane();
+        js2.getViewport().add(jTextArea_2);
         JButton send = new JButton("发送");//发送按钮
         Box b1 = Box.createVerticalBox();//用于放置消息框
-        panel.add(jTextArea_2);
-        b1.add(jTextArea_1);
+        b1.add(js1);
         panel.add(b1);
         b1.setBounds(230,10,540,350);
-
         Box b2 = Box.createHorizontalBox();//用于放置输入框和发送按钮
-        b2.add(jTextArea_2);
-        //b2.add(Box.createRigidArea(new Dimension(20,20)));
+        b2.add(js2);
         panel.add(b2);
         panel.add(send);
         b2.setBounds(230,370,540,175);
