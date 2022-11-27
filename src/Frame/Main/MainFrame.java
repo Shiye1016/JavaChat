@@ -34,7 +34,6 @@ public class MainFrame extends JFrame {
         panel.setLayout(null);
         panel.setBackground(Constants.BgColor);
         panel.add(IconBox);
-
         //聊天列表框
         String[] item = {"好友1","好友2","好友3","好友4","好友5"};
         JList<String> jl_1=new JList<>(item);// 创建列表框
