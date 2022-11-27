@@ -42,10 +42,10 @@ public class MainFrame extends JFrame {
         JLabel listText = new JLabel("聊天列表");
         panel.add(listText);
         listText.setBounds(80,100,200,200);
-        panel.add(jl_1);
-        jl_1.setBounds(60-50,210,100+50*2+10,335);
-
-
+        JScrollPane js = new JScrollPane();
+        js.getViewport().add(jl_1,null);
+        panel.add(js);
+        js.setBounds(10,210,210,335);
         //添加删除按钮
         Box bBox = Box.createHorizontalBox();
         JButton add = new JButton("添加好友");
@@ -57,7 +57,8 @@ public class MainFrame extends JFrame {
         bBox.setBounds(23,467,200,200);
 
         //右侧消息框和输入框
-        JTextArea jTextArea_1 = new JTextArea();//消息框
+        JTextArea jTextArea_1 = new JTextArea("聊天记录");//消息框
+        jTextArea_1.setEditable(false);//消息框只读
         JTextArea jTextArea_2 = new JTextArea();//输入框
         JButton send = new JButton("发送");//发送按钮
         Box b1 = Box.createVerticalBox();//用于放置消息框
@@ -68,11 +69,11 @@ public class MainFrame extends JFrame {
 
         Box b2 = Box.createHorizontalBox();//用于放置输入框和发送按钮
         b2.add(jTextArea_2);
-        b2.add(Box.createRigidArea(new Dimension(20,20)));
+        //b2.add(Box.createRigidArea(new Dimension(20,20)));
         panel.add(b2);
         panel.add(send);
-        b2.setBounds(230,370,450,210);
-        send.setBounds(670,370,100,210);
+        b2.setBounds(230,370,540,175);
+        send.setBounds(240,555,520,25);
 
         this.add(panel);
         this.setVisible(true);
@@ -83,4 +84,3 @@ public class MainFrame extends JFrame {
             new MainFrame().Init();
     }
 }
-
