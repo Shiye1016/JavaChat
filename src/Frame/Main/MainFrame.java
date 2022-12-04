@@ -9,7 +9,7 @@ public class MainFrame extends JFrame {
     final int width = 800;
     final int height = 640;
     public MainFrame() {}
-    public void Init(){
+    public void Init(){////
         this.setSize(width,height);
         this.setLocationRelativeTo(null);//窗口居中显示
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//关闭窗口程序退出
