@@ -1,9 +1,9 @@
 package Frame.Main;
 
-import Constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class MainFrame extends JFrame {
     final int width = 800;
@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
         this.setSize(width,height);
         this.setLocationRelativeTo(null);//窗口居中显示
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//关闭窗口程序退出
-        this.setTitle(Constants.APP_NAME);//窗口标题
+        this.setTitle("JavaChat");//窗口标题
         this.setResizable(false);
         this.setIconImage(new ImageIcon("images/TIcon.jpg").getImage());//窗口图标
 
@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
         //组装用户名和头像
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(Constants.BgColor);
+        panel.setBackground(new Color(193,210,240));
         panel.add(IconBox);
         //聊天列表框
         String[] item = {"好友1","好友2","好友3","好友4","好友5"};
@@ -55,7 +55,7 @@ public class MainFrame extends JFrame {
         bBox.setBounds(23,467,200,200);
 
         //右侧消息框和输入框
-        JTextArea jTextArea_1 = new JTextArea("聊天记录");//消息框
+        JTextArea jTextArea_1 = new JTextArea("聊天记录\n");//消息框
         jTextArea_1.setEditable(false);//消息框只读
         JScrollPane js1 = new JScrollPane();//消息框滚动条
         js1.getViewport().add(jTextArea_1);
@@ -77,6 +77,13 @@ public class MainFrame extends JFrame {
         this.add(panel);
         this.setVisible(true);
 
+        send.addActionListener(e -> {
+            if(!jTextArea_2.getText().equals("")){
+                jTextArea_1.append(jTextArea_2.getText() + "\n");
+                jTextArea_2.setText("");
+                jTextArea_2.setText("");
+            }
+        });
     }
 
     public static void main(String[] args){
