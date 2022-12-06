@@ -62,7 +62,7 @@ public class ChatBoxFrame{
                 String password=pField.getText().trim();
                 //访问登陆接口
 
-            }
+            }//0000
         });
 
         btnBox.add(loginBtn);
