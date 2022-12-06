@@ -1,12 +1,21 @@
 package Frame.Main;
+import Frame.Login.ChatBoxFrame;
+import QQ.EvePro.EventProcessing;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
     final int width = 800;
     final int height = 640;
+
+    JLabel uName = new JLabel("默认用户名");//用户名标签
+    String[] item = {"好友1","好友2","好友3","好友4","好友5"};
+    JList<String> jl_1=new JList<>(item);// 创建列表框
+    JTextArea jTextArea_1 = new JTextArea("聊天记录\n");//消息框
     public MainFrame() {}
     public void Init(){////
+
         this.setSize(width,height);
         this.setLocationRelativeTo(null);//窗口居中显示
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//关闭窗口程序退出
@@ -21,7 +30,7 @@ public class MainFrame extends JFrame {
         Box IconBox =Box.createVerticalBox();//垂直排列
         IconBox.add(IconLabel);
         //头像下用户名
-        JLabel uName = new JLabel("默认用户名");
+
         uName.setFont(new Font("微软雅黑", Font.BOLD,20));
         IconBox.add(Box.createVerticalStrut(10));
         IconBox.add(uName);
@@ -31,9 +40,8 @@ public class MainFrame extends JFrame {
         panel.setLayout(null);
         panel.setBackground(new Color(193,210,240));
         panel.add(IconBox);
+
         //聊天列表框
-        String[] item = {"好友1","好友2","好友3","好友4","好友5"};
-        JList<String> jl_1=new JList<>(item);// 创建列表框
         JLabel listText = new JLabel("聊天列表");
         panel.add(listText);
         listText.setBounds(80,100,200,200);
@@ -52,7 +60,7 @@ public class MainFrame extends JFrame {
         bBox.setBounds(23,467,200,200);
 
         //右侧消息框和输入框
-        JTextArea jTextArea_1 = new JTextArea("聊天记录\n");//消息框
+
         jTextArea_1.setEditable(false);//消息框只读
         JScrollPane js1 = new JScrollPane();//消息框滚动条
         js1.getViewport().add(jTextArea_1);
@@ -74,13 +82,12 @@ public class MainFrame extends JFrame {
         this.add(panel);
         this.setVisible(true);
 
-        send.addActionListener(e -> {
-            if(!jTextArea_2.getText().equals("")){
-                jTextArea_1.append(jTextArea_2.getText() + "\n");
-                jTextArea_2.setText("");
-                jTextArea_2.setText("");
-            }
-        });
+        send.addActionListener(e -> EventProcessing.sendButton(jTextArea_1,jTextArea_2));
+
+
+    }
+    public void setUserName(String UserName){
+        uName.setText(UserName);
     }
 
     public static void main(String[] args){

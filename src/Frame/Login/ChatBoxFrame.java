@@ -1,11 +1,9 @@
 package Frame.Login;
-import Frame.Main.MainFrame;
+
+import QQ.EvePro.EventProcessing;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -53,17 +51,20 @@ public class ChatBoxFrame{
         JButton loginBtn=new JButton("登陆");
         JButton RegisterBtn=new JButton("注册");
         //登陆添加监视
-        loginBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //获取用户输入的数据
-                String username=uField.getText().trim();
-                //获得密码
-                String password=pField.getText().trim();
-                //访问登陆接口
+//        loginBtn.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                //获取用户输入的数据
+//                String username=uField.getText().trim();
+//                //获得密码
+//                String password=pField.getText().trim();
+//                //访问登陆接口
+//
+//            }
+//        });
+        loginBtn.addActionListener(e -> EventProcessing.LoginBtn(uField,pField,jf));
 
-            }//0000bbbbb
-        });
+
 
         btnBox.add(loginBtn);
         btnBox.add(Box.createHorizontalStrut(60));//间隔距离
@@ -81,6 +82,10 @@ public class ChatBoxFrame{
         jf.setVisible(true);
 
     }
+    public static String getUname(JTextField jTextField){
+        return jTextField.getText();
+    }
+
     public static void main(String[] args) {
 /*        JFrame frame = new JFrame();//新建一个框架
         frame.setTitle(Constants.APP_NAME);//设置标题
@@ -98,7 +103,7 @@ public class ChatBoxFrame{
        // frame.add(labName1);
         frame.setVisible(true);*/
             new ChatBoxFrame().init();
-            new MainFrame().Init();
+
     }
 }
 
