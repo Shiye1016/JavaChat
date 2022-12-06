@@ -1,8 +1,8 @@
 package QQ.qqclient.view;
 
-import com.xx.UserClientService.MessageClientService;
-import com.xx.UserClientService.UserClientService;
-import com.xx.qqUtil.Utility;
+import QQ.UserClientService.MessageClientService;
+import QQ.UserClientService.UserClientService;
+import QQ.qqUtil.Utility;
 
 import javax.swing.*;
 
