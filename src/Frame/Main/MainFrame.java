@@ -1,9 +1,6 @@
 package Frame.Main;
-
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.TimeUnit;
 
 public class MainFrame extends JFrame {
     final int width = 800;
