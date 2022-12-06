@@ -45,7 +45,7 @@ public class ChatBoxFrame{
         //输入框 15字符的宽度
         JTextField pField=new JTextField(15);
         pBox.add(pLabel);
-        pBox.add(Box.createHorizontalStrut(10));//间隔距离
+        pBox.add(Box.createHorizontalStrut(10));//  间隔距离
         pBox.add(pField);
 
         //组装按钮
