@@ -1,7 +1,7 @@
 package QQ.qqserver.service;
 
-import com.xx.qqcommon.Message;
-import com.xx.qqcommon.MessageType;
+import QQ.qqcommon.Message;
+import QQ.qqcommon.MessageType;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

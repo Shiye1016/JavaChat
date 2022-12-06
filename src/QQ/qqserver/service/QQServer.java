@@ -1,8 +1,8 @@
 package QQ.qqserver.service;
 
-import com.xx.qqcommon.Message;
-import com.xx.qqcommon.MessageType;
-import com.xx.qqcommon.User;
+import QQ.qqcommon.User;
+import QQ.qqcommon.Message;
+import QQ.qqcommon.MessageType;
 
 import javax.swing.*;
 import java.io.ObjectInputStream;
@@ -18,7 +18,7 @@ public class QQServer {
     //这里可以使用ConcurrentHashMap,可以处理并发的集合，无线程安全的问题
     //HashMap没有线程安全因此在多线程情况下不安全
 
-    private static final ConcurrentHashMap<String,User> validUsers = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, User> validUsers = new ConcurrentHashMap<>();
     static { //在静态代码块初始化 validUsers
 
         validUsers.put("100",new User("100","123456"));

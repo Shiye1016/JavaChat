@@ -1,6 +1,6 @@
 package QQ.EvePro;
 
-import com.xx.UserClientService.UserClientService;
+import QQ.UserClientService.UserClientService;
 
 import javax.swing.*;
 
