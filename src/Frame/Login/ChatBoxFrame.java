@@ -1,6 +1,8 @@
 package Frame.Login;
 
-import QQ.EvePro.EventProcessing;
+import Frame.Main.MainFrame;
+import QQ.UserClientService.MessageClientService;
+import QQ.UserClientService.UserClientService;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -62,7 +64,7 @@ public class ChatBoxFrame{
 //
 //            }
 //        });
-        loginBtn.addActionListener(e -> EventProcessing.LoginBtn(uField,pField,jf));
+        loginBtn.addActionListener(e -> LoginBtn(uField,pField,jf));
 
 
 
@@ -87,23 +89,36 @@ public class ChatBoxFrame{
     }
 
     public static void main(String[] args) {
-/*        JFrame frame = new JFrame();//新建一个框架
-        frame.setTitle(Constants.APP_NAME);//设置标题
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//界面关闭方式
-        frame.setLocationRelativeTo(null);//显示的界面居中
-        //frame.setResizable(false);//设置能否改变大小
-        frame.setSize(700,500);
-        //ImageIcon img=new ImageIcon();
-        //JLabel labImg=new JLabel(img.getIconImage());
-        //img.setIconImage(img.getImage().getScaledInstance(frame.getWidth(),200,Image.SCALE_DEFAULT));
-        //labImg.setVisible(true);
-        //frame.getContentPane().add(labImg);
-        //frame.add(labImg);
-        //javax.swing.JLabel labName1=new javax.swing.JLabel(img);
-       // frame.add(labName1);
-        frame.setVisible(true);*/
             new ChatBoxFrame().init();
-
     }
+    static UserClientService userClientService = new UserClientService();
+    final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
+    public void LoginBtn(JTextField uName, JTextField pwd,JFrame jFrame){
+
+        if(!(userClientService.checkUser(uName.getText(),pwd.getText()))){
+            JOptionPane.showMessageDialog(null,"账号或密码错误","登录失败", JOptionPane.ERROR_MESSAGE);
+        }else{
+            jFrame.dispose();
+            MainFrame mainFrame = new MainFrame();
+            mainFrame.Init();
+            mainFrame.setUserName(uName.getText());//实现登录后用户名显示为登录时的用户名
+            if(!(content.equals(""))){
+                messageClientService.sendMessageToOne(content,uName.getText(),"200");
+            }
+        }
+    }
+    public void exit(){
+        userClientService.logout();
+    }
+    static private String content = "";
+    public static void sendButton(MainFrame mainFrame){
+        if(!(mainFrame.getTextJ_2().equals(""))){
+            mainFrame.setTextJ_1(mainFrame.getTextJ_2());
+            content = mainFrame.getTextJ_2(); //将消息内容赋给content
+            messageClientService.sendMessageToOne(content,mainFrame.getUname(),"200");
+            mainFrame.setTextJ_2();//实现点击发送按钮后输入框变空
+        }
+    }
+
 }
 

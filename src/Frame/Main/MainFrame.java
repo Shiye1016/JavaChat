@@ -1,24 +1,42 @@
 package Frame.Main;
 import Frame.Login.ChatBoxFrame;
 import QQ.EvePro.EventProcessing;
+import QQ.UserClientService.UserClientService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame {
     final int width = 800;
     final int height = 640;
 
     JLabel uName = new JLabel("默认用户名");//用户名标签
+    public String getUname(){
+        return uName.getText();
+    }
     String[] item = {"好友1","好友2","好友3","好友4","好友5"};
     JList<String> jl_1=new JList<>(item);// 创建列表框
-    JTextArea jTextArea_1 = new JTextArea("聊天记录\n");//消息框
+    static JTextArea jTextArea_1 = new JTextArea("聊天记录\n");//消息框
+    public static void setTextJ_1(String str){
+        jTextArea_1.append(str + "\n");
+    }
+    JTextArea jTextArea_2 = new JTextArea();//输入框
+    public String getTextJ_2(){
+        return jTextArea_2.getText();
+    }
+    public void setTextJ_2(){
+        jTextArea_2.setText("");
+    }
+
+
     public MainFrame() {}
     public void Init(){////
 
         this.setSize(width,height);
         this.setLocationRelativeTo(null);//窗口居中显示
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//关闭窗口程序退出
+        //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//关闭窗口程序退出
         this.setTitle("JavaChat");//窗口标题
         this.setResizable(false);
         this.setIconImage(new ImageIcon("images/TIcon.jpg").getImage());//窗口图标
@@ -64,7 +82,6 @@ public class MainFrame extends JFrame {
         jTextArea_1.setEditable(false);//消息框只读
         JScrollPane js1 = new JScrollPane();//消息框滚动条
         js1.getViewport().add(jTextArea_1);
-        JTextArea jTextArea_2 = new JTextArea();//输入框
         JScrollPane js2 = new JScrollPane();
         js2.getViewport().add(jTextArea_2);
         JButton send = new JButton("发送");//发送按钮
@@ -82,8 +99,15 @@ public class MainFrame extends JFrame {
         this.add(panel);
         this.setVisible(true);
 
-        send.addActionListener(e -> EventProcessing.sendButton(jTextArea_1,jTextArea_2));
+        send.addActionListener(e -> ChatBoxFrame.sendButton(this));
 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new ChatBoxFrame().exit();
+                System.exit(0);
+            }
+        });
 
     }
     public void setUserName(String UserName){

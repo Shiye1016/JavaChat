@@ -22,6 +22,7 @@ public class QQView extends JFrame {
     //显示主菜单
     public void mainMenu(){
 
+
 //这个循环影响窗口显示
 //        while(loop){
 //
@@ -43,7 +44,6 @@ public class QQView extends JFrame {
 //                    //到服务端验证用户
 //                    if(userClientService.checkUser(userId,pwd)){
 //                        System.out.println("======欢迎(用户 " + userId + "登录成功)======" );
-//                        //uName.setText(userId);
 //                        //进入到二级菜单
 //                        while(loop){
 //                            System.out.println("======网络通信系统二级菜单(用户 " + userId + ")======");

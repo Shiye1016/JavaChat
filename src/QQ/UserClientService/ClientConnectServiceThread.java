@@ -1,5 +1,6 @@
 package QQ.UserClientService;
 
+import Frame.Main.MainFrame;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
 
@@ -22,10 +23,9 @@ public class ClientConnectServiceThread extends Thread{
     @Override
     public void run() {
         //因为线程需要在后台和服务器通信，因此while循环
+        System.out.println("客户端线程，等待从读取从服务器端发送的消息");
         while(true){
-
             try {
-                System.out.println("客户端线程，等待从读取从服务器端发送的消息");
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                 Message message = (Message)ois.readObject(); //如果服务器没有发送Message对象，线程会阻塞在这里
                 //判断这个message类型，然后做相应的业务处理
@@ -41,6 +41,7 @@ public class ClientConnectServiceThread extends Thread{
                 } else if(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)){//普通的聊天消息
                     //把送服务器端转发的消息显示到控制台
                     System.out.println("\n\n"+ message.getSendTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");//System.out.println("\n" + message.getSender() + " 对 " + message.getGetter() + " 说 " + message.getContent());
+                    MainFrame.setTextJ_1(message.getSendTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
                 } else if(message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)){
                     //显示在客户端的控制台
                     System.out.println("\n" + message.getSender() + " 对 大家 说：" + message.getContent());
@@ -48,10 +49,7 @@ public class ClientConnectServiceThread extends Thread{
                 } else {
                     System.out.println("是其他类型的message,暂时不处理……");
                 }
-
-
             } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }

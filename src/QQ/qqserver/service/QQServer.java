@@ -21,7 +21,7 @@ public class QQServer {
     private static final ConcurrentHashMap<String, User> validUsers = new ConcurrentHashMap<>();
     static { //在静态代码块初始化 validUsers
 
-        validUsers.put("100",new User("100","123456"));
+        validUsers.put("徐林靖",new User("徐林靖","123456"));
         validUsers.put("200",new User("200","123456"));
         validUsers.put("300",new User("300","123456"));
         validUsers.put("400",new User("400","123456"));
@@ -90,13 +90,6 @@ public class QQServer {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-    }
-    public static void aaa(JTextArea jTextArea_1,JTextArea jTextArea_2){
-        if(!jTextArea_2.getText().equals("")){
-            jTextArea_1.append(jTextArea_2.getText() + "\n");
-            jTextArea_2.setText("");
-            jTextArea_2.setText("");
         }
     }
 }

@@ -83,7 +83,6 @@ public class UserClientService {
         Message message = new Message();
         message.setMesType(MessageType.MESSAGE_CLIENT_EXIT);
         message.setSender(u.getUserId());//一定要指定是哪个客户端id
-
         //发送message
         try {
             //ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream()) //因为一个用户只有一个socket所以可以这么写
@@ -95,7 +94,6 @@ public class UserClientService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 }
