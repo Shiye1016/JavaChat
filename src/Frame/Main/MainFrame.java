@@ -11,11 +11,11 @@ public class MainFrame extends JFrame {
     final int height = 640;
 
     public static JLabel uName = new JLabel("默认用户名");//用户名标签
-    public static String getUname(){
+    public String getUname(){
         return uName.getText();
     }
     private static JList<String> jl_1=new JList<>();// 创建列表框
-    static JTextArea jTextArea_1 = new JTextArea("聊天记录\n");//消息框
+    static JTextArea jTextArea_1 = new JTextArea("聊天记录\n\n");//消息框
     public static void setTextJ_1(String str){
         jTextArea_1.append(str + "\n");
     }
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
     public static void setOnlineUser(String user){
         defaultListModel.add(defaultListModel.size(),user);
     }
-    public static void clearList(){
+    public static void clearList(){//清空列表框，重新加载在线用户时调用
         defaultListModel.removeAllElements();
     }
     public String getSelectUser(){
