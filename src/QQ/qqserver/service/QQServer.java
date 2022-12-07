@@ -4,7 +4,6 @@ import QQ.qqcommon.User;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
 
-import javax.swing.*;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;

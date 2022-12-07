@@ -1,5 +1,7 @@
 package QQ.qqcommon;
 
+import QQ.qqUtil.GetTime;
+
 import java.io.Serializable;
 
 //表示客户端和服务器端通信时的消息对象
@@ -48,7 +50,7 @@ public class Message implements Serializable {
     }
 
     public void setSendTime(String sendTime) {
-        this.sendTime = sendTime;
+        this.sendTime = GetTime.displayTime();
     }
 
     private String sendTime;//发送时间

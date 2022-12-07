@@ -1,6 +1,7 @@
 package QQ.UserClientService;
 
 import Frame.Main.MainFrame;
+import QQ.qqUtil.GetTime;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
 
@@ -34,17 +35,19 @@ public class ClientConnectServiceThread extends Thread{
                     //取出在线列表信息并显示
                     String[] onlineUsers = message.getContent().split(" ");
                     System.out.println("\n======在线用户列表======");
+                    MainFrame.clearList();
                     for (String onlineUser : onlineUsers) {
                         System.out.println("用户：" + onlineUser);
+                        MainFrame.setOnlineUser(onlineUser);
                     }
 
                 } else if(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)){//普通的聊天消息
                     //把送服务器端转发的消息显示到控制台
-                    System.out.println("\n\n"+ message.getSendTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");//System.out.println("\n" + message.getSender() + " 对 " + message.getGetter() + " 说 " + message.getContent());
-                    MainFrame.setTextJ_1(message.getSendTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
+                    System.out.println("\n\n"+ GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");//System.out.println("\n" + message.getSender() + " 对 " + message.getGetter() + " 说 " + message.getContent());
+                    MainFrame.setTextJ_1(GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
                 } else if(message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)){
                     //显示在客户端的控制台
-                    System.out.println("\n" + message.getSender() + " 对 大家 说：" + message.getContent());
+                    System.out.println( GetTime.displayTime() + "\n" + message.getSender() + " 对 大家 说：" + message.getContent());
 
                 } else {
                     System.out.println("是其他类型的message,暂时不处理……");

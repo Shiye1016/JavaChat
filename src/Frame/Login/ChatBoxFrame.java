@@ -3,11 +3,13 @@ package Frame.Login;
 import Frame.Main.MainFrame;
 import QQ.UserClientService.MessageClientService;
 import QQ.UserClientService.UserClientService;
+import jdk.jfr.internal.tool.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ChatBoxFrame{
     JFrame jf=new JFrame("Wechat");
@@ -52,18 +54,7 @@ public class ChatBoxFrame{
         Box btnBox=Box.createHorizontalBox();
         JButton loginBtn=new JButton("登陆");
         JButton RegisterBtn=new JButton("注册");
-        //登陆添加监视
-//        loginBtn.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                //获取用户输入的数据
-//                String username=uField.getText().trim();
-//                //获得密码
-//                String password=pField.getText().trim();
-//                //访问登陆接口
-//
-//            }
-//        });
+
         loginBtn.addActionListener(e -> LoginBtn(uField,pField,jf));
 
 
@@ -102,9 +93,6 @@ public class ChatBoxFrame{
             MainFrame mainFrame = new MainFrame();
             mainFrame.Init();
             mainFrame.setUserName(uName.getText());//实现登录后用户名显示为登录时的用户名
-            if(!(content.equals(""))){
-                messageClientService.sendMessageToOne(content,uName.getText(),"200");
-            }
         }
     }
     public void exit(){
@@ -113,11 +101,21 @@ public class ChatBoxFrame{
     static private String content = "";
     public static void sendButton(MainFrame mainFrame){
         if(!(mainFrame.getTextJ_2().equals(""))){
-            mainFrame.setTextJ_1(mainFrame.getTextJ_2());
             content = mainFrame.getTextJ_2(); //将消息内容赋给content
-            messageClientService.sendMessageToOne(content,mainFrame.getUname(),"200");
-            mainFrame.setTextJ_2();//实现点击发送按钮后输入框变空
+            System.out.println(mainFrame.getUname());
+            if(mainFrame.getSelectUser() == null){ //这里不能使用MainFrame.getSelectUser().equals(null) 不然会报错，我也不知道为啥
+                JOptionPane.showMessageDialog(null,"请选择聊天对象！","发送失败", JOptionPane.ERROR_MESSAGE);
+            }else if(Objects.equals(mainFrame.getSelectUser(), mainFrame.getTextJ_2())){
+                JOptionPane.showMessageDialog(null,"不能给自己发消息！","发送失败", JOptionPane.ERROR_MESSAGE);
+            }else{
+                messageClientService.sendMessageToOne(content,mainFrame.getUname(),mainFrame.getSelectUser());
+                MainFrame.setTextJ_1(mainFrame.getTextJ_2());
+                mainFrame.setTextJ_2();//实现点击发送按钮后输入框变空
+            }
         }
+    }
+    public static void refresh(){
+        userClientService.onlineFriendList();
     }
 
 }

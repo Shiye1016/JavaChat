@@ -1,5 +1,8 @@
 package QQ.qqserver.service;
 
+import Frame.Main.MainFrame;
+import sun.applet.Main;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -9,9 +12,7 @@ public class ManageClientThreads {
 
     //添加线程对象到hm集合
     public static void addClientThread(String userId,ServerConnectClientThread serverConnectClientThread){
-
         hm.put(userId,serverConnectClientThread);
-
     }
     //根据userId返回ServerConnectClientThread线程
     public static ServerConnectClientThread getServerConnectClientThread(String userId){
@@ -28,7 +29,8 @@ public class ManageClientThreads {
         //遍历集合，遍历HashMap的key
         Iterator<String> iterator = hm.keySet().iterator();
         StringBuilder onlineUserList = new StringBuilder();
-        while(iterator.hasNext())
+       // hm.get("123456");
+       while(iterator.hasNext())
             onlineUserList.append(iterator.next()).append(" ");
         return onlineUserList.toString();
     }

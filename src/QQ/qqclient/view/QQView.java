@@ -1,3 +1,7 @@
+
+/**
+这个类似乎没用了
+ */
 package QQ.qqclient.view;
 
 import QQ.UserClientService.MessageClientService;

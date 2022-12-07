@@ -32,7 +32,7 @@ public class ServerConnectClientThread extends Thread{
                 //根据message的类型做相应的业务处理
                 if(message.getMesType().equals(MessageType.MESSAGE_GET_ONLINE_FRIEND)){
                     //客户端要在线用户列表
-                    System.out.println(message.getSender() + " 请求在线用户列表");
+                    System.out.println(message.getSender() + " 刷新了在线用户列表");
                     String onlineUser = ManageClientThreads.getOnlineUser();
                     //返回message
                     //构建一个Message对象返回给客户端
