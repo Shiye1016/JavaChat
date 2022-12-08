@@ -1,5 +1,6 @@
 package QQ.UserClientService;
 
+import Login.Login;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
 import QQ.qqcommon.User;
@@ -27,7 +28,7 @@ public class UserClientService {
 
         try {
             // 连接到服务器发送u对象
-            Socket socket = new Socket(InetAddress.getByName("127.0.0.1"),9999);
+            Socket socket = new Socket(InetAddress.getByName(Login.getIpAddress()),9999);
             //得到ObjectOutputStream对象
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             oos.writeObject(u);//发送user对象

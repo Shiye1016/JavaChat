@@ -7,6 +7,8 @@ import QQ.qqUtil.GetTime;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,6 +17,11 @@ public class Login {
     JFrame jf=new JFrame("Wechat");
     final int width=500;
     final int height=300;
+
+    private static String ipAddress = "127.0.0.1";//用于指定服务器IP地址
+    public static String getIpAddress(){
+        return ipAddress;
+    }
     public void init(){
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jf.setSize(width,height);
@@ -72,12 +79,37 @@ public class Login {
         vBox.add(Box.createVerticalStrut(40));//行之间距离
         vBox.add(btnBox);
         bgPanel.add(vBox);
+
+        JMenuBar jMenuBar = new JMenuBar();
+        JMenu jMenu = new JMenu("首选项");
+        JMenuItem jMenuItem = new JMenu("服务器ip");
+        JMenuItem jMenuItem1 = new JMenu("关于");
+        jMenuItem.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Object s = JOptionPane.showInputDialog(jf,"set ip address","Server IP Address", //当点击取消时s为空则toString()方法会抛出异常，因此先将返回的对象赋给对象s，若不为空则调用toString()方法
+                        JOptionPane.INFORMATION_MESSAGE,null,null,"127.0.0.1");
+                if(s == null)
+                    ipAddress = "127.0.0.1";
+                else
+                    ipAddress = s.toString();
+            }
+        });
+        jMenuItem1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                JOptionPane.showMessageDialog(null,"Developed by Xiang Xi and Zhou Jun " +
+                        "hao\nfor Java courses in December 2022","About us",JOptionPane.INFORMATION_MESSAGE,null);
+            }
+        });
+        jMenu.add(jMenuItem);
+        jMenu.add(jMenuItem1);
+        jMenuBar.add(jMenu);
+        jf.setJMenuBar(jMenuBar);
+
         jf.add(bgPanel);
         jf.setVisible(true);
 
-    }
-    public static String getUname(JTextField jTextField){
-        return jTextField.getText();
     }
 
     public static void main(String[] args) {
@@ -101,10 +133,10 @@ public class Login {
     public void exit(){
         userClientService.logout();
     }
-    private static String content = "";
+
     public static void sendButton(MainFrame mainFrame){
         if(!(mainFrame.getTextJ_2().equals(""))){
-            content = mainFrame.getTextJ_2(); //将消息内容赋给content
+            String content = mainFrame.getTextJ_2(); //将消息内容赋给content
             if(mainFrame.getSelectUser() != null && !mainFrame.getSelectUser().equals(username)){
                 messageClientService.sendMessageToOne(content,username,mainFrame.getSelectUser());
                 MainFrame.setTextJ_1(GetTime.displayTime() + "\n你 对 " + mainFrame.getSelectUser() + "说：" + mainFrame.getTextJ_2() + "\n" );

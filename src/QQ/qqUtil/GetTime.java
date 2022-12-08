@@ -11,4 +11,3 @@ public class GetTime {
         return sdf.format(date);
     }
 }
-

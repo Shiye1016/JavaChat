@@ -89,9 +89,6 @@ public class ServerConnectClientThread extends Thread{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }
     }
-
 }
