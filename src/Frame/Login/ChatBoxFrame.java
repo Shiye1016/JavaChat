@@ -106,20 +106,13 @@ public class ChatBoxFrame{
     public static void sendButton(MainFrame mainFrame){
         if(!(mainFrame.getTextJ_2().equals(""))){
             content = mainFrame.getTextJ_2(); //将消息内容赋给content
-            System.out.println("用户名" + username + "'");
-
-//            if(mainFrame.getSelectUser() == null){ //这里不能使用MainFrame.getSelectUser().equals(null) 不然会报错，我也不知道为啥
-//                JOptionPane.showMessageDialog(null,"请选择聊天对象！","发送失败", JOptionPane.ERROR_MESSAGE);
-//            }else if(mainFrame.getSelectUser() == username){
-//                JOptionPane.showMessageDialog(null,"不能给自己发消息！","发送失败", JOptionPane.ERROR_MESSAGE);
-//            }
-            if(mainFrame.getSelectUser() != null && mainFrame.getSelectUser() != username){
+            if(mainFrame.getSelectUser() != null && !mainFrame.getSelectUser().equals(username)){
                 messageClientService.sendMessageToOne(content,username,mainFrame.getSelectUser());
                 MainFrame.setTextJ_1(GetTime.displayTime() + "\n你 对 " + mainFrame.getSelectUser() + "说：" + mainFrame.getTextJ_2() + "\n" );
                 mainFrame.setTextJ_2();//实现点击发送按钮后输入框变空
             }else if(mainFrame.getSelectUser() == null){
                 JOptionPane.showMessageDialog(mainFrame,"请选择聊天对象！","发送失败", JOptionPane.ERROR_MESSAGE);
-            }else if(mainFrame.getSelectUser().equals(mainFrame.getUname())){
+            }else if(mainFrame.getSelectUser().equals(username)){
                 JOptionPane.showMessageDialog(mainFrame,"不能给自己发消息！","发送失败", JOptionPane.ERROR_MESSAGE);
             }
         }else{

@@ -1,5 +1,7 @@
 package QQ.qqserver.service;
 
+import QQ.qqUtil.GetTime;
+import QQ.qqUtil.WriteToLog;
 import QQ.qqcommon.User;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
@@ -44,7 +46,8 @@ public class QQServer {
         //端口可以写在配置文件
         ServerSocket ss = null;
         try {
-            System.out.println("服务端在9999端口监听……");
+            System.out.println("服务端在9999端口监听……\t" + GetTime.displayTime());
+            WriteToLog.writeLog("\n\n\n服务端在9999端口监听…… " + GetTime.displayTime());
             ss = new ServerSocket(9999);
 
             while (true){ //当和某个客户端连接后，会继续监听
@@ -71,7 +74,8 @@ public class QQServer {
                     //把该线程放入到一个集合中进行管理
                     ManageClientThreads.addClientThread(u.getUserId(),serverConnectClientThread);
                 }else{//登录失败
-                    System.out.println("用户 id= " + u.getUserId() + " pwd= " + u.getPasswd() + "验证失败");
+                    System.out.println("用户 id = " + u.getUserId() + " pwd = " + u.getPasswd() + "验证失败 " + GetTime.displayTime());
+                    WriteToLog.writeLog("用户 id = " + u.getUserId() + " pwd = " + u.getPasswd() + "验证失败\t" + GetTime.displayTime());
                     message.setMesType(MessageType.MESSAGE_LOGIN_FAIL);
                     oos.writeObject(message);
                     //登录失败关闭socket

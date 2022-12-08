@@ -1,5 +1,7 @@
 package QQ.qqserver.service;
 
+import QQ.qqUtil.GetTime;
+import QQ.qqUtil.WriteToLog;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
 
@@ -23,7 +25,8 @@ public class ServerConnectClientThread extends Thread{
 
     @Override
     public void run() {//线程处于run状态，可以发送和接收消息
-        System.out.println("服务端和客户端" + userId + "保持通信，读取数据……");
+        System.out.println("用户 " + userId + " 已上线 " + GetTime.displayTime());
+        WriteToLog.writeLog("用户 " + userId + " 已上线 " + GetTime.displayTime());//写入日志
         while(true){
             try {
 
@@ -32,7 +35,8 @@ public class ServerConnectClientThread extends Thread{
                 //根据message的类型做相应的业务处理
                 if(message.getMesType().equals(MessageType.MESSAGE_GET_ONLINE_FRIEND)){
                     //客户端要在线用户列表
-                    System.out.println(message.getSender() + " 刷新了在线用户列表");
+                    System.out.println(message.getSender() + " 刷新了在线用户列表\t" + GetTime.displayTime());
+                    WriteToLog.writeLog(message.getSender() + " 刷新了在线用户列表\t" + GetTime.displayTime());//写入日志
                     String onlineUser = ManageClientThreads.getOnlineUser();
                     //返回message
                     //构建一个Message对象返回给客户端
@@ -70,6 +74,7 @@ public class ServerConnectClientThread extends Thread{
 
                 } else if(message.getMesType().equals(MessageType.MESSAGE_CLIENT_EXIT)){//客户端退出
                     System.out.println(message.getSender() + " 退出");
+                    WriteToLog.writeLog(message.getSender() + " 退出\t" + GetTime.displayTime());//写入日志
                     //将这个客户端对应线程从集合中删除
                     ManageClientThreads.removeServerConnectClientThread(message.getSender());
                     socket.close();//关闭连接
