@@ -1,5 +1,4 @@
-package Frame.Main;
-import Frame.Login.ChatBoxFrame;
+package Login;
 
 import javax.swing.*;
 import java.awt.*;
@@ -105,16 +104,16 @@ public class MainFrame extends JFrame {
         this.add(panel);
         this.setVisible(true);
 
-        send.addActionListener(e -> ChatBoxFrame.sendButton(this));
+        send.addActionListener(e -> Login.sendButton(this));
 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new ChatBoxFrame().exit();
+                new Login().exit();
                 System.exit(0);
             }
         });
-        refresh.addActionListener(e -> ChatBoxFrame.refresh());//刷新用户列表按钮事件处理
+        refresh.addActionListener(e -> Login.refresh());//刷新用户列表按钮事件处理
     }
     public void setUserName(String UserName){
         uName.setText(UserName);

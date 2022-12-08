@@ -1,6 +1,5 @@
 package QQ.UserClientService;
 
-import Frame.Main.MainFrame;
 import QQ.qqUtil.GetTime;
 import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;

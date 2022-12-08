@@ -1,6 +1,5 @@
-package Frame.Login;
+package Login;
 
-import Frame.Main.MainFrame;
 import QQ.UserClientService.MessageClientService;
 import QQ.UserClientService.UserClientService;
 import QQ.qqUtil.GetTime;
@@ -12,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class ChatBoxFrame{
+public class Login {
     JFrame jf=new JFrame("Wechat");
     final int width=500;
     final int height=300;
@@ -82,7 +81,7 @@ public class ChatBoxFrame{
     }
 
     public static void main(String[] args) {
-            new ChatBoxFrame().init();
+            new Login().init();
     }
     static UserClientService userClientService = new UserClientService();
     final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息

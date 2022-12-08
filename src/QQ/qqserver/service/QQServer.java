@@ -14,6 +14,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 //服务器，在监听999，等待客户端的连接，并保持通信
 public class QQServer {
+    public static void main(String[] args) {
+        new QQServer();
+    }
 
     //创建一个集合存放多个用户，如果是这些用户登录就认为是合法的
     //这里可以使用ConcurrentHashMap,可以处理并发的集合，无线程安全的问题
@@ -47,7 +50,7 @@ public class QQServer {
         ServerSocket ss = null;
         try {
             System.out.println("服务端在9999端口监听……\t" + GetTime.displayTime());
-            WriteToLog.writeLog("\n\n\n服务端在9999端口监听…… " + GetTime.displayTime());
+            WriteToLog.writeServiceLog("\n\n\n服务端在9999端口监听…… " + GetTime.displayTime());
             ss = new ServerSocket(9999);
 
             while (true){ //当和某个客户端连接后，会继续监听
@@ -75,7 +78,7 @@ public class QQServer {
                     ManageClientThreads.addClientThread(u.getUserId(),serverConnectClientThread);
                 }else{//登录失败
                     System.out.println("用户 id = " + u.getUserId() + " pwd = " + u.getPasswd() + "验证失败 " + GetTime.displayTime());
-                    WriteToLog.writeLog("用户 id = " + u.getUserId() + " pwd = " + u.getPasswd() + "验证失败\t" + GetTime.displayTime());
+                    WriteToLog.writeServiceLog("用户 id = " + u.getUserId() + " pwd = " + u.getPasswd() + "验证失败\t" + GetTime.displayTime());
                     message.setMesType(MessageType.MESSAGE_LOGIN_FAIL);
                     oos.writeObject(message);
                     //登录失败关闭socket
