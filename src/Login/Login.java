@@ -153,6 +153,5 @@ public class Login {
     public static void refresh(){
         userClientService.onlineFriendList();
     }
-
 }
 
