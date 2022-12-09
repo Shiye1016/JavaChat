@@ -15,8 +15,8 @@ import java.io.IOException;
 
 public class Login {
     JFrame jf=new JFrame("Wechat");
-    final int width=600;
-    final int height=500;
+    final int width=640;
+    final int height=480;
 
     private static String ipAddress = "127.0.0.1";//用于指定服务器IP地址
     public static String getIpAddress(){
