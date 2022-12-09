@@ -15,8 +15,8 @@ import java.io.IOException;
 
 public class Login {
     JFrame jf=new JFrame("Wechat");
-    final int width=500;
-    final int height=300;
+    final int width=600;
+    final int height=500;
 
     private static String ipAddress = "127.0.0.1";//用于指定服务器IP地址
     public static String getIpAddress(){
@@ -98,7 +98,7 @@ public class Login {
         jMenuItem1.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                JOptionPane.showMessageDialog(jf,"Developed by Xiang Xi and Zhou Jun " +
+                JOptionPane.showMessageDialog(jf,"Developed by Xiang Xi and Zhou Jun" +
                         "hao\nfor Java courses in December 2022","About us",JOptionPane.INFORMATION_MESSAGE,null);
             }
         });
@@ -114,9 +114,11 @@ public class Login {
 
     public static void main(String[] args) {
             new Login().init();
+            new RegisteredFrame().init();
     }
     static UserClientService userClientService = new UserClientService();
     final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
+
     public void LoginBtn(JTextField uName, JTextField pwd,JFrame jFrame){
 
         if(!(userClientService.checkUser(uName.getText(),pwd.getText()))){
