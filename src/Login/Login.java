@@ -14,14 +14,16 @@ import java.io.IOException;
 
 
 public class Login {
-    JFrame jf=new JFrame("Wechat");
+    private static JFrame jf=new JFrame("Wechat");
     final int width=640;
     final int height=480;
-
     private static String ipAddress = "127.0.0.1";//用于指定服务器IP地址
+    private static RegisteredFrame registeredFrame =new RegisteredFrame();
     public static String getIpAddress(){
         return ipAddress;
     }
+    static UserClientService userClientService = new UserClientService();
+    final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
     public void init(){
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jf.setSize(width,height);
@@ -64,7 +66,7 @@ public class Login {
         JButton RegisterBtn=new JButton("注册");
 
         loginBtn.addActionListener(e -> LoginBtn(uField,pField,jf));
-
+        RegisterBtn.addActionListener(e->Registered(registeredFrame));
 
 
         btnBox.add(loginBtn);
@@ -113,47 +115,33 @@ public class Login {
     }
 
     public static void main(String[] args) {
-            new Login().init();
-            new RegisteredFrame().init();
+            Login L=new Login();
+            L.init();
+            registeredFrame.init();
+            registeredFrame.setVisible(false);
     }
-    static UserClientService userClientService = new UserClientService();
-    final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
+    public static void Registered(RegisteredFrame registeredframe){
+        jf.setVisible(false);
+        registeredframe.setVisible(true);
+    }
+    public static void CancelRegistered(RegisteredFrame registeredframe){
+        registeredframe.setVisible(false);
+        jf.setVisible(true);
+
+    }
 
     public void LoginBtn(JTextField uName, JTextField pwd,JFrame jFrame){
 
         if(!(userClientService.checkUser(uName.getText(),pwd.getText()))){
             JOptionPane.showMessageDialog(null,"账号或密码错误","登录失败", JOptionPane.ERROR_MESSAGE);
         }else{
-            username = uName.getText();
+            String username = uName.getText();
             jFrame.dispose();
             MainFrame mainFrame = new MainFrame();
             mainFrame.Init();
             mainFrame.setUserName(username);//实现登录后用户名显示为登录时的用户名
         }
     }
-    private static String username;
-    public void exit(){
-        userClientService.logout();
-    }
 
-    public static void sendButton(MainFrame mainFrame){
-        if(!(mainFrame.getTextJ_2().equals(""))){
-            String content = mainFrame.getTextJ_2(); //将消息内容赋给content
-            if(mainFrame.getSelectUser() != null && !mainFrame.getSelectUser().equals(username)){
-                messageClientService.sendMessageToOne(content,username,mainFrame.getSelectUser());
-                MainFrame.setTextJ_1(GetTime.displayTime() + "\n你 对 " + mainFrame.getSelectUser() + "说：" + mainFrame.getTextJ_2() + "\n" );
-                mainFrame.setTextJ_2();//实现点击发送按钮后输入框变空
-            }else if(mainFrame.getSelectUser() == null){
-                JOptionPane.showMessageDialog(mainFrame,"请选择聊天对象！","发送失败", JOptionPane.ERROR_MESSAGE);
-            }else if(mainFrame.getSelectUser().equals(username)){
-                JOptionPane.showMessageDialog(mainFrame,"不能给自己发消息！","发送失败", JOptionPane.ERROR_MESSAGE);
-            }
-        }else{
-            JOptionPane.showMessageDialog(mainFrame,"不能发送空消息！","发送失败", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    public static void refresh(){
-        userClientService.onlineFriendList();
-    }
 }
 

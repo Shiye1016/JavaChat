@@ -1,22 +1,22 @@
 package Login;
 
+import QQ.UserClientService.MessageClientService;
+import QQ.UserClientService.UserClientService;
+import QQ.qqUtil.GetTime;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
 
 public class MainFrame extends JFrame {
-
     final int width = 800;
-
     final int height = 640;
-
+    public static String UserName;
     public static JLabel uName = new JLabel("默认用户名"); //用户名标签
 
-
+    static UserClientService userClientService = new UserClientService();
+    final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
     private static JList<String> jl_1=new JList<>();// 创建列表框
 
     static JTextArea jTextArea_1 = new JTextArea("聊天记录\n\n");//消息框
@@ -35,10 +35,10 @@ public class MainFrame extends JFrame {
         jTextArea_2.setText("");
     }
 
-    private static final DefaultListModel defaultListModel = new DefaultListModel();//设置列表框可以动态添加元素
+    private static DefaultListModel defaultListModel = new DefaultListModel();//设置列表框可以动态添加元素
 
     public static void setOnlineUser(String user){
-        defaultListModel.add(defaultListModel.size(),user);//添加一项到在线列表
+        defaultListModel.add(defaultListModel.size(),user);
     }
 
     public static void clearList(){//清空列表框，重新加载在线用户时调用
@@ -55,11 +55,10 @@ public class MainFrame extends JFrame {
     public MainFrame() {}
 
     public void Init(){////
-        defaultListModel.add(0,"aaaa");
-        //defaultListModel.add(1,"bbbb");
         jl_1.setModel(defaultListModel);
         this.setSize(width,height);
         this.setLocationRelativeTo(null);//窗口居中显示
+        //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//关闭窗口程序退出
         this.setTitle("JavaChat");//窗口标题
         this.setResizable(false);
         this.setIconImage(new ImageIcon("images/TIcon.jpg").getImage());//窗口图标
@@ -121,33 +120,43 @@ public class MainFrame extends JFrame {
         this.add(panel);
         this.setVisible(true);
 
-        send.addActionListener(e -> Login.sendButton(this));
+        send.addActionListener(e -> sendButton(this));
 
-        addWindowListener(new WindowAdapter() { //实现关闭窗口后关闭相应线程
+        addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new Login().exit();
+                exit();
                 System.exit(0);
             }
         });
-        refresh.addActionListener(e -> Login.refresh());//刷新用户列表按钮事件处理
-        jl_1.addListSelectionListener(e -> MainFrame.test() );
+        refresh.addActionListener(e -> refresh());//刷新用户列表按钮事件处理
     }
-    public static void test(){
-        if(new MainFrame().getSelectUser() != null && new MainFrame().getSelectUser().equals(MainFrame.uName.getText())){
-            File file = new File(MainFrame.uName.getText() + "To" + new MainFrame().getSelectUser() + ".txt");
-            try {
-                file.createNewFile();
-            }catch (IOException e){
-
+    public void setUserName(String name){
+        UserName=name;
+        uName.setText(name);
+    }
+    public static void sendButton(MainFrame mainFrame){
+        if(!(mainFrame.getTextJ_2().equals(""))){
+            String content = mainFrame.getTextJ_2(); //将消息内容赋给content
+            if(mainFrame.getSelectUser() != null && !mainFrame.getSelectUser().equals(UserName)){
+                messageClientService.sendMessageToOne(content,UserName,mainFrame.getSelectUser());
+                MainFrame.setTextJ_1(GetTime.displayTime() + "\n你 对 " + mainFrame.getSelectUser() + "说：" + mainFrame.getTextJ_2() + "\n" );
+                mainFrame.setTextJ_2();//实现点击发送按钮后输入框变空
+            }else if(mainFrame.getSelectUser() == null){
+                JOptionPane.showMessageDialog(mainFrame,"请选择聊天对象！","发送失败", JOptionPane.ERROR_MESSAGE);
+            }else if(mainFrame.getSelectUser().equals(UserName)){
+                JOptionPane.showMessageDialog(mainFrame,"不能给自己发消息！","发送失败", JOptionPane.ERROR_MESSAGE);
             }
+        }else{
+            JOptionPane.showMessageDialog(mainFrame,"不能发送空消息！","发送失败", JOptionPane.ERROR_MESSAGE);
         }
-
     }
-    public void setUserName(String UserName){
-        uName.setText(UserName);
+    public void exit(){
+        userClientService.logout();
     }
-
+    public static void refresh(){
+        userClientService.onlineFriendList();
+    }
     public static void main(String[] args){
             new MainFrame().Init();
     }
