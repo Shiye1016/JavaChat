@@ -91,11 +91,6 @@ public class Login {
                         JOptionPane.INFORMATION_MESSAGE,null,null,"127.0.0.1");
                 if(s == null)
                     ipAddress = "127.0.0.1";
-
-
-
-
-
                 else
                     ipAddress = s.toString();
             }

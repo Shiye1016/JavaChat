@@ -27,4 +27,5 @@ public class WriteToLog {
     public static void showRecord(String sender,String getter){
 
     }
+
 }

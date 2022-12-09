@@ -29,7 +29,6 @@ public class ServerConnectClientThread extends Thread{
         WriteToLog.writeServiceLog("用户 " + userId + " 已上线 " + GetTime.displayTime());//写入日志
         while(true){
             try {
-
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                 Message message = (Message) ois.readObject();
                 //根据message的类型做相应的业务处理
@@ -80,8 +79,6 @@ public class ServerConnectClientThread extends Thread{
                     socket.close();//关闭连接
                     //退出线程
                     break;
-
-
                 }
                 else {
                     System.out.println("其他类型的message,暂时不处理");
