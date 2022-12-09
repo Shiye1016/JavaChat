@@ -7,6 +7,7 @@ import QQ.qqcommon.Message;
 import QQ.qqcommon.MessageType;
 
 import java.io.ObjectInputStream;
+import java.io.WriteAbortedException;
 import java.net.Socket;
 
 public class ClientConnectServiceThread extends Thread{
@@ -45,12 +46,13 @@ public class ClientConnectServiceThread extends Thread{
                 } else if(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)){//普通的聊天消息
                     //把送服务器端转发的消息显示到控制台
                     System.out.println("\n\n"+ GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");//System.out.println("\n" + message.getSender() + " 对 " + message.getGetter() + " 说 " + message.getContent());
-                    WriteToLog.writeClientChatRecord(message.getSender() + " 对 " + message.getGetter() + " 说：" + message.getContent() +"\t"+ message.getSendTime());
-                    MainFrame.setTextJ_1(GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
+                    //WriteToLog.writeClientChatRecord(message.getSender() + " 对 " + message.getGetter() + " 说：" + message.getContent() +"\t"+ message.getSendTime());
+                    //MainFrame.setTextJ_1(GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
+
                 } else if(message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)){
                     //显示在客户端的控制台
                     System.out.println(message.getSendTime() + "\n" + message.getSender() + " 对 大家 说：" + message.getContent());
-                    WriteToLog.writeClientChatRecord(message.getSendTime() + "\n" + message.getSender() + " 对 大家 说：" + message.getContent() + "\t" + message.getSendTime());
+                   // WriteToLog.writeClientChatRecord(message.getSendTime() + "\n" + message.getSender() + " 对 大家 说：" + message.getContent() + "\t" + message.getSendTime());
                 } else {
                     System.out.println("是其他类型的message,暂时不处理……");
                 }
