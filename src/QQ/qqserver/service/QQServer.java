@@ -49,8 +49,8 @@ public class QQServer {
         //端口可以写在配置文件
         ServerSocket ss = null;
         try {
-            System.out.println("服务端在9999端口监听……\t" + GetTime.displayTime());
-            WriteToLog.writeServiceLog("\n\n\n服务端在9999端口监听…… " + GetTime.displayTime());
+            System.out.println("服务端已启动，端口：9999 \t" + GetTime.displayTime());
+            WriteToLog.writeServiceLog("\n\n\n服务端已启动，端口：9999 " + GetTime.displayTime());
             ss = new ServerSocket(9999);
 
             while (true){ //当和某个客户端连接后，会继续监听

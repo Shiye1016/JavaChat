@@ -98,7 +98,7 @@ public class Login {
         jMenuItem1.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                JOptionPane.showMessageDialog(null,"Developed by Xiang Xi and Zhou Jun " +
+                JOptionPane.showMessageDialog(jf,"Developed by Xiang Xi and Zhou Jun " +
                         "hao\nfor Java courses in December 2022","About us",JOptionPane.INFORMATION_MESSAGE,null);
             }
         });
