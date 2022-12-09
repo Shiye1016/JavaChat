@@ -47,7 +47,7 @@ public class ClientConnectServiceThread extends Thread{
                     //把送服务器端转发的消息显示到控制台
                     System.out.println("\n\n"+ GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");//System.out.println("\n" + message.getSender() + " 对 " + message.getGetter() + " 说 " + message.getContent());
                     //WriteToLog.writeClientChatRecord(message.getSender() + " 对 " + message.getGetter() + " 说：" + message.getContent() +"\t"+ message.getSendTime());
-                    //MainFrame.setTextJ_1(GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
+                    MainFrame.setTextJ_1(GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
 
                 } else if(message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)){
                     //显示在客户端的控制台
