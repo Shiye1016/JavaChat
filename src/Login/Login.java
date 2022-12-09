@@ -117,6 +117,7 @@ public class Login {
     }
     static UserClientService userClientService = new UserClientService();
     final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
+
     public void LoginBtn(JTextField uName, JTextField pwd,JFrame jFrame){
 
         if(!(userClientService.checkUser(uName.getText(),pwd.getText()))){

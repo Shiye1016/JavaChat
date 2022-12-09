@@ -9,36 +9,46 @@ public class MainFrame extends JFrame {
     final int width = 800;
     final int height = 640;
 
-    public static JLabel uName = new JLabel("默认用户名");//用户名标签
-    public String getUname(){
-        return uName.getText();
-    }
+    public static JLabel uName = new JLabel("默认用户名"); //用户名标签
+
+
     private static JList<String> jl_1=new JList<>();// 创建列表框
+
     static JTextArea jTextArea_1 = new JTextArea("聊天记录\n\n");//消息框
+
     public static void setTextJ_1(String str){
         jTextArea_1.append(str + "\n");
     }
+
     private JTextArea jTextArea_2 = new JTextArea();//输入框
+
     public String getTextJ_2(){
         return jTextArea_2.getText();
     }
+
     public void setTextJ_2(){
         jTextArea_2.setText("");
     }
+
     private static DefaultListModel defaultListModel = new DefaultListModel();//设置列表框可以动态添加元素
 
     public static void setOnlineUser(String user){
         defaultListModel.add(defaultListModel.size(),user);
     }
+
     public static void clearList(){//清空列表框，重新加载在线用户时调用
         defaultListModel.removeAllElements();
     }
+
     public String getSelectUser(){
         return jl_1.getSelectedValue();
     }
+
     private final JButton refresh = new JButton("刷新列表");
+
     private final JButton del = new JButton("创建群聊");
     public MainFrame() {}
+
     public void Init(){////
         jl_1.setModel(defaultListModel);
         this.setSize(width,height);
@@ -60,6 +70,7 @@ public class MainFrame extends JFrame {
         IconBox.add(Box.createVerticalStrut(10));
         IconBox.add(uName);
         IconBox.setBounds(60,30,100,135);
+
         //组装用户名和头像
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -74,6 +85,7 @@ public class MainFrame extends JFrame {
         js.getViewport().add(jl_1,null);
         panel.add(js);
         js.setBounds(10,210,210,335);
+
         //添加删除按钮
         Box bBox = Box.createHorizontalBox();
         bBox.add(refresh);
@@ -83,7 +95,6 @@ public class MainFrame extends JFrame {
         bBox.setBounds(23,467,200,200);
 
         //右侧消息框和输入框
-
         jTextArea_1.setEditable(false);//消息框只读
         JScrollPane js1 = new JScrollPane();//消息框滚动条
         js1.getViewport().add(jTextArea_1);
