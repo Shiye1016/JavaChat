@@ -50,5 +50,4 @@ public class WriteAndRead {
         }catch(IOException e){
         }
     }
-
 }

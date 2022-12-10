@@ -55,14 +55,10 @@ public class RegisteredFrame extends JFrame{
         String rPasswd = pField.getText();
         UserClientService userClientService = new UserClientService();
         if(userClientService.register(rUser,rPasswd)){
-            System.out.println("注册成功");
             JOptionPane.showMessageDialog(this,"用户注册成功","Succeed",JOptionPane.INFORMATION_MESSAGE,null);
             Login.CancelRegistered(this);
         }else{
             JOptionPane.showMessageDialog(this,"账号已存在或用户名密码未设置","注册失败", JOptionPane.ERROR_MESSAGE);
         }
-
-
     }
-
 }

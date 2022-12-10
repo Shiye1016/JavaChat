@@ -36,7 +36,6 @@ public class ClientConnectServiceThread extends Thread{
                     String[] onlineUsers = message.getContent().split(" ");
                     MainFrame.clearList();
                     for (String onlineUser : onlineUsers) {
-                        System.out.println("用户：" + onlineUser);
                         MainFrame.setOnlineUser(onlineUser);
                     }
                 } else if(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)){//普通的聊天消息

@@ -18,5 +18,4 @@ public interface MessageType {
     String MESSAGE_REGISTERED_SUCCEED = "7";//注册成功
 
     String MESSAGE_REGISTERED_FAIL = "8";//注册失败
-
 }

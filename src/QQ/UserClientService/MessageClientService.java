@@ -18,7 +18,6 @@ public class MessageClientService {
         message.setGetter(getterId);
         message.setContent(content);
         message.setSendTime(GetTime.displayTime());
-        System.out.println("\n\n" + message.getSendTime() + "\n" + "你对" + getterId + "说：" + content + "\n");
         WriteAndRead.writeSend(message.getSender(),message.getGetter(),message.getContent());
         //发送给服务端
         try {

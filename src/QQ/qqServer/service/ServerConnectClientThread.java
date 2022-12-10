@@ -23,7 +23,6 @@ public class ServerConnectClientThread extends Thread{
 
     @Override
     public void run() {//线程处于run状态，可以发送和接收消息
-        System.out.println("用户 " + userId + " 已上线 " + GetTime.displayTime());
         WriteLog.writeServiceLog("用户 " + userId + " 已上线 " + GetTime.displayTime());//写入日志
         label:
         while(true){
@@ -34,9 +33,7 @@ public class ServerConnectClientThread extends Thread{
                 switch (message.getMesType()) {
                     case MessageType.MESSAGE_GET_ONLINE_FRIEND: {
                         //客户端要在线用户列表
-                        System.out.println(message.getSender() + " 刷新了在线用户列表\t" + GetTime.displayTime());
                         WriteLog.writeServiceLog(message.getSender() + " 刷新了在线用户列表\t" + GetTime.displayTime());//写入日志
-
                         String onlineUser = ManageClientThreads.getOnlineUser();
                         //返回message
                         //构建一个Message对象返回给客户端

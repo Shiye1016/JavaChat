@@ -9,5 +9,4 @@ public class ServerTime {
         SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
         return sdf.format(date);
     }
-
 }

@@ -79,7 +79,6 @@ public class QQServer {
         //端口可以写在配置文件
         ServerSocket ss = null;
         try {
-            System.out.println("服务端已启动，端口：9999 \t" + GetTime.displayTime());
             WriteLog.writeServiceLog("\n\n\n服务端已启动，端口：9999 " + GetTime.displayTime());
             ss = new ServerSocket(9999);
 

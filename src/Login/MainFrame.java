@@ -59,8 +59,6 @@ public class MainFrame extends JFrame {
 
     private final JButton refresh = new JButton("刷新列表");
 
-    private final JButton offLine = new JButton("离线消息");
-
     public MainFrame() {}
 
     public void Init(){////
@@ -91,7 +89,7 @@ public class MainFrame extends JFrame {
         panel.add(IconBox);
 
         //聊天列表框
-        JLabel listText = new JLabel("聊天列表");
+        JLabel listText = new JLabel("在线列表");
         panel.add(listText);
         listText.setBounds(80,100,200,200);
         JScrollPane js = new JScrollPane();
@@ -99,14 +97,7 @@ public class MainFrame extends JFrame {
         panel.add(js);
         js.setBounds(10,210,210,335);
 
-        //添加删除按钮
-//        Box bBox = Box.createHorizontalBox();
-//        bBox.add(refresh);
-//        bBox.add(Box.createHorizontalStrut(10));
-//        bBox.add(offLine);
-//        panel.add(bBox);
-//        bBox.setBounds(23,467,200,200);
-
+        //添加刷新列表按钮
         this.add(refresh);
         refresh.setBounds(15,555,200,25);
 
