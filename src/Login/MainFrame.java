@@ -11,11 +11,15 @@ import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame {
     final int width = 800;
+
     final int height = 640;
+
     public static String UserName;
+
     public static JLabel uName = new JLabel("默认用户名"); //用户名标签
 
     final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
+
     private static final JList<String> jl_1=new JList<>();// 创建列表框
 
     static JTextArea jTextArea_1 = new JTextArea();//消息框
@@ -23,6 +27,7 @@ public class MainFrame extends JFrame {
     public static void setTextJ_1(String str){
         jTextArea_1.append(str + "\n");
     }
+
     public static void setTextJ_1(){
         jTextArea_1.setText("");
     }
@@ -32,6 +37,7 @@ public class MainFrame extends JFrame {
     public String getTextJ_2(){
         return jTextArea_2.getText();
     }
+
 
     public void setTextJ_2(){
         jTextArea_2.setText("");
@@ -54,6 +60,7 @@ public class MainFrame extends JFrame {
     private final JButton refresh = new JButton("刷新列表");
 
     private final JButton offLine = new JButton("离线消息");
+
     public MainFrame() {}
 
     public void Init(){////
@@ -93,12 +100,15 @@ public class MainFrame extends JFrame {
         js.setBounds(10,210,210,335);
 
         //添加删除按钮
-        Box bBox = Box.createHorizontalBox();
-        bBox.add(refresh);
-        bBox.add(Box.createHorizontalStrut(10));
-        bBox.add(offLine);
-        panel.add(bBox);
-        bBox.setBounds(23,467,200,200);
+//        Box bBox = Box.createHorizontalBox();
+//        bBox.add(refresh);
+//        bBox.add(Box.createHorizontalStrut(10));
+//        bBox.add(offLine);
+//        panel.add(bBox);
+//        bBox.setBounds(23,467,200,200);
+
+        this.add(refresh);
+        refresh.setBounds(15,555,200,25);
 
         //右侧消息框和输入框
         jTextArea_1.setEditable(false);//消息框只读
@@ -160,5 +170,9 @@ public class MainFrame extends JFrame {
         }else{
             JOptionPane.showMessageDialog(mainFrame,"不能发送空消息！","发送失败", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public static void main(String[] args) {
+        new MainFrame().Init();
     }
 }
