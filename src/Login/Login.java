@@ -1,9 +1,6 @@
 package Login;
 
-import QQ.UserClientService.MessageClientService;
 import QQ.UserClientService.UserClientService;
-import QQ.qqUtil.GetTime;
-
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,16 +11,16 @@ import java.io.IOException;
 
 
 public class Login {
-    private static JFrame jf=new JFrame("Wechat");
+    private static final JFrame jf=new JFrame("Wechat");
     final int width=640;
     final int height=480;
     private static String ipAddress = "127.0.0.1";//用于指定服务器IP地址
-    private static RegisteredFrame registeredFrame =new RegisteredFrame();
+    private static final RegisteredFrame registeredFrame =new RegisteredFrame();
     public static String getIpAddress(){
         return ipAddress;
     }
     static UserClientService userClientService = new UserClientService();
-    final static MessageClientService messageClientService = new MessageClientService();//用于用户发消息
+
     public void init(){
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jf.setSize(width,height);
@@ -143,5 +140,14 @@ public class Login {
         }
     }
 
+    //无异常退出
+    public static void exit(){
+        userClientService.logout();
+    }
+
+    //刷新在线列表
+    public static void refresh(){
+        userClientService.onlineFriendList();
+    }
 }
 

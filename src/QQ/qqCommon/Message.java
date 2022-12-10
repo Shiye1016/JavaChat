@@ -1,6 +1,4 @@
-package QQ.qqcommon;
-
-import QQ.qqUtil.GetTime;
+package QQ.qqCommon;
 
 import java.io.Serializable;
 
@@ -50,7 +48,7 @@ public class Message implements Serializable {
     }
 
     public void setSendTime(String sendTime) {
-        this.sendTime = GetTime.displayTime();
+        this.sendTime = sendTime;
     }
 
     private String sendTime;//发送时间

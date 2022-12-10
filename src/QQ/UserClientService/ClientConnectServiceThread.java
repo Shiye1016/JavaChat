@@ -1,13 +1,11 @@
 package QQ.UserClientService;
 
 import Login.MainFrame;
-import QQ.qqUtil.GetTime;
-import QQ.qqUtil.WriteToLog;
-import QQ.qqcommon.Message;
-import QQ.qqcommon.MessageType;
+import QQ.clientUtil.WriteAndRead;
+import QQ.qqCommon.Message;
+import QQ.qqCommon.MessageType;
 
 import java.io.ObjectInputStream;
-import java.io.WriteAbortedException;
 import java.net.Socket;
 
 public class ClientConnectServiceThread extends Thread{
@@ -36,25 +34,15 @@ public class ClientConnectServiceThread extends Thread{
                 if(message.getMesType().equals((MessageType.MESSAGE_RET_ONLINE_FRIEND))){
                     //取出在线列表信息并显示
                     String[] onlineUsers = message.getContent().split(" ");
-                    System.out.println("\n======在线用户列表======");
                     MainFrame.clearList();
                     for (String onlineUser : onlineUsers) {
                         System.out.println("用户：" + onlineUser);
                         MainFrame.setOnlineUser(onlineUser);
                     }
-
                 } else if(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)){//普通的聊天消息
                     //把送服务器端转发的消息显示到控制台
-                    System.out.println("\n\n"+ GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");//System.out.println("\n" + message.getSender() + " 对 " + message.getGetter() + " 说 " + message.getContent());
-                    //WriteToLog.writeClientChatRecord(message.getSender() + " 对 " + message.getGetter() + " 说：" + message.getContent() +"\t"+ message.getSendTime());
-                    MainFrame.setTextJ_1(GetTime.displayTime() + "\n" + message.getSender() + " 对 你 说：" + message.getContent() + "\n");
-
-                } else if(message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)){
-                    //显示在客户端的控制台
-                    System.out.println(message.getSendTime() + "\n" + message.getSender() + " 对 大家 说：" + message.getContent());
-                   // WriteToLog.writeClientChatRecord(message.getSendTime() + "\n" + message.getSender() + " 对 大家 说：" + message.getContent() + "\t" + message.getSendTime());
-                } else {
-                    System.out.println("是其他类型的message,暂时不处理……");
+                    MainFrame.setTextJ_1(message.getSendTime() + "\n" + message.getSender() + "对你说：" + message.getContent() + "\n");
+                    WriteAndRead.writeGet(message.getSender(),message.getGetter(),message.getContent());
                 }
             } catch (Exception e) {
             }

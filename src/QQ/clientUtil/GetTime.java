@@ -1,4 +1,4 @@
-package QQ.qqUtil;
+package QQ.clientUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

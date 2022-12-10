@@ -1,4 +1,4 @@
-package QQ.qqcommon;
+package QQ.qqCommon;
 
 import java.io.Serializable;
 
@@ -7,6 +7,16 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     private String userId;//用户名
     private String passwd;//用户密码;
+
+    private boolean USER_REGISTERED = false; //为了便于服务器识别是否为用户注册
+
+    public void setUSER_REGISTERED(boolean b){
+        USER_REGISTERED = b;
+    }
+
+    public boolean isUSER_REGISTERED(){
+        return USER_REGISTERED;
+    }
 
     public User(){}
 

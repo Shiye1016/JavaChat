@@ -1,4 +1,4 @@
-package QQ.qqUtil;
+package QQ.clientUtil;
 
 import Login.MainFrame;
 
@@ -6,26 +6,29 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class WriteAndRead {
-    public static void writeServiceLog(String logInfo){
-        try {
-            FileWriter log = new FileWriter("log.txt",true);
-            log.write( logInfo + "\n");
-            log.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-
-
-    public static void writeRecord(String sender, String getter, String content){
+    //将发送的信息写入本地文件
+    public static void writeSend(String sender, String getter, String content){
         try {
             FileWriter record = new FileWriter(sender + " to " + getter + ".txt",true);
-            record.write(content + "\n");
+            record.write(GetTime.displayTime() + "\n你对" + getter + "说：" + content + "\n\n");
             record.flush();
             record.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("发送消息写入失败");
+        }
+
+    }
+
+    //将收到的信息写入本地文件
+    public static void writeGet(String sender,String getter, String content){
+        try{
+            FileWriter get = new FileWriter(getter + " to " + sender + ".txt",true);
+            get.write(GetTime.displayTime() + "\n" +sender + "对你说：" + content + "\n\n");
+            get.flush();
+            get.close();
+        }catch (IOException e){
+            System.out.println("接收消息写入失败");
         }
 
     }

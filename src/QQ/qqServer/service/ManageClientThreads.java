@@ -1,4 +1,4 @@
-package QQ.qqserver.service;
+package QQ.qqServer.service;
 
 import java.util.HashMap;
 import java.util.Iterator;

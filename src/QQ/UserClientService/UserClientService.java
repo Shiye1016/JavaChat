@@ -1,9 +1,9 @@
 package QQ.UserClientService;
 
 import Login.Login;
-import QQ.qqcommon.Message;
-import QQ.qqcommon.MessageType;
-import QQ.qqcommon.User;
+import QQ.qqCommon.Message;
+import QQ.qqCommon.MessageType;
+import QQ.qqCommon.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,7 +24,6 @@ public class UserClientService {
         //创建User对象
         u.setUserId(userId);
         u.setPasswd(pwd);
-
 
         try {
             // 连接到服务器发送u对象
@@ -96,5 +95,37 @@ public class UserClientService {
             e.printStackTrace();
         }
 
+    }
+
+    //用于注册
+    public boolean register(String userId, String pwd){
+        boolean b = false;
+        //创建User对象
+        u.setUserId(userId);
+        u.setPasswd(pwd);
+        u.setUSER_REGISTERED(true);
+
+        try {
+            // 连接到服务器发送u对象
+            Socket socket = new Socket(InetAddress.getByName(Login.getIpAddress()),9999);
+            //得到ObjectOutputStream对象
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            oos.writeObject(u);//发送user对象
+
+            //读取从服务端回复的Message对象
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            Message ms = (Message) ois.readObject();
+
+            if(ms.getMesType().equals(MessageType.MESSAGE_REGISTERED_SUCCEED)){
+                b = true;
+            }else{
+                //如果登录失败，就不能启动和服务器通信的线程，关闭socket
+                socket.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
     }
 }
