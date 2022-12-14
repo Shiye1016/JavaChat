@@ -3,7 +3,6 @@ package Login;
 import QQ.UserClientService.MessageClientService;
 import QQ.clientUtil.GetTime;
 import QQ.clientUtil.WriteAndRead;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -67,7 +66,7 @@ public class MainFrame extends JFrame {
         this.setLocationRelativeTo(null);//窗口居中显示
         this.setTitle("JavaChat");//窗口标题
         this.setResizable(false);
-        this.setIconImage(new ImageIcon("images/TIcon.jpg").getImage());//窗口图标
+        this.setIconImage(new ImageIcon("images/logo.png").getImage());//窗口图标
 
         //左上角头像
         JLabel IconLabel = new JLabel();

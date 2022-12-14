@@ -1,6 +1,7 @@
 package QQ.UserClientService;
 
 import Login.MainFrame;
+import QQ.clientUtil.MusicPlay;
 import QQ.clientUtil.WriteAndRead;
 import QQ.qqCommon.Message;
 import QQ.qqCommon.MessageType;
@@ -39,8 +40,9 @@ public class ClientConnectServiceThread extends Thread{
                         MainFrame.setOnlineUser(onlineUser);
                     }
                 } else if(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)){//普通的聊天消息
-                    //把送服务器端转发的消息显示到控制台
+                    //把服务器端转发的消息显示到控制台
                     MainFrame.setTextJ_1(message.getSendTime() + "\n" + message.getSender() + "对你说：" + message.getContent() + "\n");
+                    MusicPlay.MusicPlay("music/qw.wav");
                     WriteAndRead.writeGet(message.getSender(),message.getGetter(),message.getContent());
                 }
             } catch (Exception e) {
