@@ -2,8 +2,8 @@ package Javachat.UserClientService;
 
 import Javachat.clientUtil.GetTime;
 import Javachat.clientUtil.WriteAndRead;
-import Javachat.qqCommon.Message;
-import Javachat.qqCommon.MessageType;
+import Javachat.ChatCommon.Message;
+import Javachat.ChatCommon.MessageType;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

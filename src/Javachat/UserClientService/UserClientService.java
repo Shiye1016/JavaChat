@@ -1,9 +1,9 @@
 package Javachat.UserClientService;
 
 import Login.Login;
-import Javachat.qqCommon.Message;
-import Javachat.qqCommon.MessageType;
-import Javachat.qqCommon.User;
+import Javachat.ChatCommon.Message;
+import Javachat.ChatCommon.MessageType;
+import Javachat.ChatCommon.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

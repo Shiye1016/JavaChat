@@ -3,8 +3,8 @@ package Javachat.UserClientService;
 import Login.MainFrame;
 import Javachat.clientUtil.MusicPlay;
 import Javachat.clientUtil.WriteAndRead;
-import Javachat.qqCommon.Message;
-import Javachat.qqCommon.MessageType;
+import Javachat.ChatCommon.Message;
+import Javachat.ChatCommon.MessageType;
 
 import java.io.ObjectInputStream;
 import java.net.Socket;
