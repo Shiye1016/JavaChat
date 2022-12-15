@@ -1,6 +1,6 @@
 package Login;
 
-import QQ.UserClientService.UserClientService;
+import Javachat.UserClientService.UserClientService;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,8 +1,8 @@
 package Login;
 
-import QQ.UserClientService.MessageClientService;
-import QQ.clientUtil.GetTime;
-import QQ.clientUtil.WriteAndRead;
+import Javachat.UserClientService.MessageClientService;
+import Javachat.clientUtil.GetTime;
+import Javachat.clientUtil.WriteAndRead;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
